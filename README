@@ -1,4 +1,1 @@
-This is your new Play 2.1 application
-=====================================
-
-This file will be packaged with your application, when using `play dist`.
+Site for the Nantes' band Rüsty Deal. It's the occasion for me to play with Play, scala and couchbase.

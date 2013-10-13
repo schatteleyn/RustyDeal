@@ -7,11 +7,11 @@ GET     /                           controllers.Application.index
 GET	/band			    controllers.Application.band
 GET	/listen			    controllers.Application.listen
 GET	/links			    controllers.Application.links
-GET	/discography		    controllers.Discography.index
-GET	/shows			    controllers.Show.index
+#GET	/discography		    controllers.Discographies.index
+#GET	/shows			    controllers.Shows.index
 
-GET	/login			    controllers.User.login
-POST	/login			    controllers.User.submit
+GET	/login			    controllers.Users.login
+POST	/login			    controllers.Users.submit
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

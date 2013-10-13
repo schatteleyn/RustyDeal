@@ -10,14 +10,14 @@ object Application extends Controller {
   }
 
   def listen = Action {
-    Ok(views.html.listen)
+    Ok(views.html.listen())
   }
   
   def band = Action {
-    Ok(views.html.band)
+    Ok(views.html.band())
   }
   
   def links = Action {
-    Ok(views.html.links)
+    Ok(views.html.links())
   }
 }

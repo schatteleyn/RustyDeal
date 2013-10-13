@@ -3,15 +3,27 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                           controllers.Application.index #News
+#GET	/news/new		    controllers.Application.new
+#GET	/news/add		    controllers.Application.add
+#PUT	/news/edit		    controllers.Application.edit
+#DELETE /news/delete		    controllers.Application.delete
+
 GET	/band			    controllers.Application.band
 GET	/listen			    controllers.Application.listen
 GET	/links			    controllers.Application.links
-#GET	/discography		    controllers.Discographies.index
-#GET	/shows			    controllers.Shows.index
 
 GET	/login			    controllers.Users.login
 POST	/login			    controllers.Users.submit
+
+#GET	/discography		    controllers.Discographies.index
+#GET	/discography/new	    controllers.Discographies.new
+#POST	/discography/add	    controllers.Discographies.add
+#DELETE /discography/delete	    controllers.Discographies.delete
+
+#GET	/shows			    controllers.Shows.index
+#GET	/shows/new		    controllers.Shows.new
+#GET	/shows/add		    controllers.Shows.add
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

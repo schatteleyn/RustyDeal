@@ -18,7 +18,7 @@ object Users extends Controller {
 		Ok(views.html.login())
 	}
 
-	def submit = Action { implicit request =>
+	def auth = Action { implicit request =>
 		val (username, password) = form.bindFromRequest.get
 		Redirect(routes.Discographies.newCD).withSession("connected" -> username)
 	}

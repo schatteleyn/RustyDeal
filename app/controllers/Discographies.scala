@@ -9,6 +9,7 @@ import play.api.libs.json.Json
 import models.Discography
 import models.Discographys
 import models.Discographys._
+import java.util.UUID
 
 object Discographies extends Controller with CouchbaseController {
 	val form = Form(
@@ -29,13 +30,13 @@ object Discographies extends Controller with CouchbaseController {
 	}
 
 	def newCD = Action {
-		Async {
-			Discographys.findAll().map(cds => Ok(views.html.Admin.discography(cds)))
-		}
+		Ok(views.html.Admin.discography())
 	}
 
 	def add = Action { implicit request =>
 		val (title, content) = form.bindFromRequest.get
+		val album = Discography(Some(UUID.randomUUID().toString), title, "", content)
+		Discographys.save(album)
 		Ok("%s %s".format(title, content))
 	}
 

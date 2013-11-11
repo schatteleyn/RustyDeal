@@ -16,15 +16,6 @@ object Discographys {
 
 	def bucket = Couchbase.bucket("discographies")
 
-	//val discographyForm: Form[Discography] = Form(
-	//	mapping(
-	//		"id" -> optional(text),
-	//		"title" -> nonEmptyText
-	//		"date" -> nonEmptyDate,
-	//		"content" -> nonEmptyText,
-	//	)(Discography.apply)(Discography.unapply)
-	//)
-
 	def findById(id: String): Future[Option[Discography]] = {
 		bucket.get[Discography](id)	
 	}

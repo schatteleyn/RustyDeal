@@ -14,17 +14,17 @@ GET	/listen			    controllers.Application.listen
 GET	/links			    controllers.Application.links
 
 GET	/login			    controllers.Users.login
-POST	/login			    controllers.Users.submit
+POST	/login			    controllers.Users.auth
 GET	/logout			    controllers.Users.logout
 
 GET	/discography		    controllers.Discographies.index
 GET	/discography/new	    controllers.Discographies.newCD
-POST	/discography/add	    controllers.Discographies.add
+POST	/discography/new	    controllers.Discographies.add
 #DELETE /discography/delete	    controllers.Discographies.delete
 
 GET	/shows			    controllers.Shows.index
-#GET	/shows/new		    controllers.Shows.newShow
-#GET	/shows/add		    controllers.Shows.add
+GET	/shows/new		    controllers.Shows.newShow
+POST	/shows/new		    controllers.Shows.add
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

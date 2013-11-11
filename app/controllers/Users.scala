@@ -20,6 +20,6 @@ object Users extends Controller {
 
 	def submit = Action { implicit request =>
 		val (username, password) = form.bindFromRequest.get
-		Ok("Hi %s %s".format(username, password))
+		Ok("Hi %s".format(username))
 	}
 }

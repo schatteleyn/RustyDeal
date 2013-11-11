@@ -22,12 +22,16 @@ object Discographies extends Controller with CouchbaseController {
 	//	Discographys.findAll().map()
 	}
 
-	def index = Action {
-		Discographys.findAll().map(cds => Ok(views.html.discography(cds)))
+	def index = Action { 
+		Async {
+			Discographys.findAll().map(cds => Ok(views.html.discography(cds)))
+		}
 	}
 
 	def newCD = Action {
-		Discographys.findAll().map(cds => Ok(views.html.Admin.discography(cds)))
+		Async {
+			Discographys.findAll().map(cds => Ok(views.html.Admin.discography(cds)))
+		}
 	}
 
 	def add = Action { implicit request =>
@@ -36,9 +40,11 @@ object Discographies extends Controller with CouchbaseController {
 	}
 
 	def delete(id: String) = Action {
-		Discographys.remove(id).map { status =>
-			updateDisco()
-			Ok(Json.obj( "success" -> status.isSuccess,"message" -> status.getMessage))
+		Async {
+			Discographys.remove(id).map { status =>
+				updateDisco()
+				Ok(Json.obj( "success" -> status.isSuccess,"message" -> status.getMessage))
+			}
 		}
 	}
 }

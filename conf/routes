@@ -15,6 +15,7 @@ GET	/links			    controllers.Application.links
 
 GET	/login			    controllers.Users.login
 POST	/login			    controllers.Users.submit
+GET	/logout			    controllers.Users.logout
 
 GET	/discography		    controllers.Discographies.index
 GET	/discography/new	    controllers.Discographies.newCD

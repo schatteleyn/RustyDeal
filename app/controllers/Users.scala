@@ -20,6 +20,12 @@ object Users extends Controller {
 
 	def submit = Action { implicit request =>
 		val (username, password) = form.bindFromRequest.get
-		Ok("Hi %s".format(username))
+		Redirect(routes.Discographies.newCD).withSession("connected" -> username)
 	}
+
+	def logout = Action {
+		Redirect(routes.Users.login).withNewSession.flashing(
+			"success" -> "You've been logged out"
+		)
+        }
 }

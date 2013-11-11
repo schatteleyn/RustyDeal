@@ -7,24 +7,14 @@ import play.api.Play.current
 import scala.concurrent.Future
 import net.spy.memcached.ops.OperationStatus
 
-case class Show(id: Option[String], date: String, location: String, hour: String, price: Int)
+case class Show(id: Option[String], date: String, location: String, hour: String, price: Float)
 
-object Shows {
+object ShowObject {
 	implicit val showReader = Json.reads[Show]
 	implicit val showWriter = Json.writes[Show]
 	implicit val ec = Couchbase.couchbaseExecutor
 
 	def bucket = Couchbase.bucket("shows")
-
-	//val showForm: Form[Show] = Form(
-	//	mapping(
-	//		"id" -> optional(text),
-	//		"date" -> nonEmptyDate,
-	//		"location" -> nonEmptyText,
-	//		"hour" -> nonEmptyText,
-	//		"price" -> nonEmptyInt
-	//	)(Show.apply)(Show.unapply)
-	//)
 
 	def findById(id: String): Future[Option[Show]] = {
 		bucket.get[Show](id)	
